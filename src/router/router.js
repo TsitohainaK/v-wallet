@@ -8,7 +8,9 @@ import { routes } from "./routes.js";
  */
 export const createRoute = (fallback = () =>"Error 404 not found") => {
   const path = window.location.pathname;
+  console.log(path);
   const route = Object.values(routes).find((route) => route.path == path);
+  console.log(route);
   
   return route ? route : {render: fallback};
 };

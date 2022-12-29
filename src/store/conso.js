@@ -1,7 +1,6 @@
 let consos = [];
 
 export default function useConsoStore(){
-  console.log(consos);
   function setConso(_conso){
     consos = _conso;
   }
