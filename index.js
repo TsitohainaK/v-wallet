@@ -32,5 +32,5 @@ http
     });
   })
   .listen(port, () => {
-    console.log(`running at localhost:${port}`);
+    console.log(`server running at localhost:${port}`);
   });

@@ -9,4 +9,7 @@ just prefix the return with
 `/*html*/`
 
 
-Mbola KAMO BE za anao documentation de aleo ny code no atao manazava azy xD
+this doesn't have a compiler cause the way it is intented to be, i can't install any dependency,
+so, have to do it manualy
+
+and this is not yet the final version, i keep working on this
