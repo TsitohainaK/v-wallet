@@ -1,21 +1,22 @@
-import useConsoStore from "../../store/conso.js"
+import useConsoStore from "../../store/consoStore.js";
+import { storageSet } from "../../utils/localStorage.js"
 
-export default function Consomation(conso){
+export default function Consomation(conso) {
   const formater = Intl.NumberFormat("fr");
+  let btnElt = document.getElementById(conso.id);
   const consoStore = useConsoStore();
 
-  function script(){
-   const btnElt = document.getElementById(conso.id);
-
-   btnElt.addEventListener("click", ()=>{
-    consoStore.removeConso(conso);
-    console.log(consoStore);
-   })
+  function script(_conso) {
+    btnElt = document.getElementById(conso.id);
+    btnElt.addEventListener("click", (e) => {
+      consoStore.removeConso(_conso);
+      storageSet("conso",JSON.stringify(consoStore.consos.value))
+    });
   }
 
-  const render = () => 
+  const render = () =>
     /*html*/
- `
+    `
   <div class="card conso" style="margin-bottom: 5px;">
     <div class="title">${conso.name}</div>
     <div class="content flex items-center justify-end">
@@ -23,9 +24,10 @@ export default function Consomation(conso){
       <button id="${conso.id}" class="action">Remove</button>
     </div>
   </div>
-  `
-  
+  `;
+
   return {
-    render, script
-  }
+    render,
+    script,
+  };
 }
