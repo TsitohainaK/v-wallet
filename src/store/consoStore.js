@@ -8,7 +8,7 @@ export default function useConsoStore() {
   }
 
   function addConso(_conso) {
-    consos.value.push(_conso.value);
+    consos.value.push(_conso);
   }
 
   function removeConso(_conso) {

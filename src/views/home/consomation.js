@@ -3,12 +3,12 @@ import { storageSet } from "../../utils/localStorage.js"
 
 export default function Consomation(conso) {
   const formater = Intl.NumberFormat("fr");
-  let btnElt = document.getElementById(conso.id);
   const consoStore = useConsoStore();
-
+  let btnElt = document.getElementById(conso.id);
   function script(_conso) {
     btnElt = document.getElementById(conso.id);
     btnElt.addEventListener("click", (e) => {
+      e.preventDefault();
       consoStore.removeConso(_conso);
       storageSet("conso",JSON.stringify(consoStore.consos.value))
     });

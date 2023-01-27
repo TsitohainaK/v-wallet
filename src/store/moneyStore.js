@@ -1,38 +1,37 @@
 import { ref } from "../utils/reactivity.js";
 import useConsoStore from "./consoStore.js";
 
-const money = ref({
-  actual: 0,
-  todays: 0
-})
+const actual = ref(0);
+const todays = ref(0);
 
-
-export default function useMoneyStore(){
+export default function useMoneyStore() {
   const consoStore = useConsoStore();
-  
-  function setMoney(_money){
-    money.value.actual = _money.actual;
-    money.value.todays = _money.todays;
+
+  function setMoney(_money) {
+    actual.value = _money.actual;
+    todays.value = _money.todays;
   }
 
-  function setActual(_actual){
-    console.log("lol");
-    money.value.actual = _actual;
+  function setActual(_actual) {
+    actual.value = _actual;
   }
 
-  function setTodays(){
+  function setTodays() {
     const date = new Date();
     const todayFormated = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
-    
+
     let today = 0;
-    
-    if(consoStore.consos.value){consoStore.consos.value.forEach(conso => {
-      if(conso.formatedDate === todayFormated){
-        today += conso.cost;
-      }
-    });}
-    money.value.todays = today;
+
+    if (consoStore.consos.value && consoStore.consos.value !== []) {
+      consoStore.consos.value.forEach((conso) => {
+        if (conso.formatedDate === todayFormated) {
+          today += conso.cost;
+        }
+      });
+    }
+
+    todays.value = today;
   }
 
-  return {money, setMoney, setActual, setTodays};
+  return { setMoney, setActual, setTodays, actual, todays };
 }

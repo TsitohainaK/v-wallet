@@ -25,7 +25,7 @@ const eventedPushState = (url, title = "", state = {}) => {
  * use div with class link as routerLink to navigate without refreshing
  */
 export const routerLink = () => {
-  const links = document.getElementsByClassName("link");
+  const links = document.querySelectorAll("a");
   const linksArr = Array.from(links);
   if(linksArr){
     linksArr.forEach((link) => {

@@ -1,44 +1,47 @@
 import { emit } from "../../utils/reactivity.js";
 
-export default function ChangeCurrendBalanceModal(showModal) {
+export default function ChangeCurrendBalanceModal() {
   const app = document.getElementById("app");
 
   function script(showModal) {
-    if (!showModal.value) {
+    if (!showModal) {
       const modal = document.getElementById("editActual");
-      modal.remove();
+      modal ? modal.remove() : null;
     } else {
       const pp = document.createElement("div");
       pp.id = "editActual";
-      pp.className = "fixed top-0 left-0 w-screen h-screen bg-black-o-70 z-2 flex items-center justify-center"
+      pp.className = "fixed top-0 left-0 w-screen h-screen bg-black-o-70 z-2 flex items-center justify-center";
       app.appendChild(pp);
       pp.innerHTML = render();
+
       const close = document.getElementById("close");
       const form = document.getElementById("form");
       const cost = form[0];
 
-      close.onclick = ()=>{
+      close.onclick = () => {
         emit("close", {
-          showModal: false
-        })
-      }
+          showModal: false,
+        });
+      };
 
       form.onsubmit = (e) => {
         e.preventDefault();
-        edit(parseInt(cost.value)) ? (cost.value = "",
-        close.click()) : null
-        
-      }
-
+        edit(parseInt(cost.value))
+          ? ((cost.value = ""),
+            emit("close", {
+              showModal: false,
+            }))
+          : null;
+      };
     }
   }
 
-  function edit(cost){
-    if(cost && cost >= 0){
-      emit("editActual", {actual: cost});
+  function edit(cost) {
+    if (cost && cost >= 0) {
+      emit("editActual", { actual: cost });
       return true;
-    }else{
-      alert("Balance should be not empty or less than 0")
+    } else {
+      alert("Balance should be not empty or less than 0");
       return false;
     }
   }

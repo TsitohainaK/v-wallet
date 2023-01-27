@@ -1,11 +1,11 @@
-export default function TopBar(){
+export default function TopBar() {
   /*html*/
   const render = () => `
   <div class="header | h-header p-2 bg-primary text-white flex items-center sticky-top">
-    <div class="brand">
-      <h1 class="logo | text-xlarge">v-wallet</h1>
-    </div>
+    <h1 class="brand">
+      <a class="link text-xlarge text-white" href="/">v-wallet</a>
+    </h1>
   </div>
-  `
-  return {render}
+  `;
+  return { render };
 }
