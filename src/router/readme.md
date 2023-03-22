@@ -1,9 +1,10 @@
 # Routes
 use the routes file to add your route, routes are generaly composed of:
--name
--path
--render
--script
+
+- name
+- path
+- render
+- script
 
 name is just to identify it, 
 path is the pathname (in the url) to access to it,
