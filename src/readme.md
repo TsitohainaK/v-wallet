@@ -4,9 +4,9 @@
 a component is a function that return atleast a render function, i.e the html in as a string 
 
 ## script()
-paired with the actual script this function is used to handle the changement on the his html,
+paired with the actual script this function is used to handle the changement on its html,
 so it is called after the render function, this function is optional but if it exist,
-it need to be returned with the render function as 
+it need to be returned with the render function as well
 
 ### exemple
 here an exemple of how a component or view file should look like
