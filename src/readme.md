@@ -11,7 +11,7 @@ it need to be returned with the render function as well
 ### exemple
 here an exemple of how a component or view file should look like
 
-`
+```
 export default function Exemple(){
   /* Here your script that will be called before the render */
   const user = "John Doe"
@@ -29,4 +29,4 @@ export default function Exemple(){
     render, script
   }
 }
-`
+```
